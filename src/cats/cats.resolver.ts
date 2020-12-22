@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CatsService } from './cats.service';
 import { CatType } from './dto/create-cat.dto';
 import { CatInput, EditCatInput } from './inputs/cat.input';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Resolver()
 export class CatsResolver {
@@ -33,4 +34,8 @@ export class CatsResolver {
     return this.catsService.edit(id, input)
   }
 
+  @Mutation(() => CatType)
+  async deleteCat(@Args('id') id: string) {
+    return this.catsService.delete(id)
+  }
 }

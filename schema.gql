@@ -25,6 +25,7 @@ input EditCatInput {
 type Mutation {
   createCat(input: CatInput!): CatType!
   editCat(id: String!, input: EditCatInput!): CatType!
+  deleteCat(id: String!): CatType!
 }
 
 type Query {

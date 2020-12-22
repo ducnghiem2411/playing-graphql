@@ -32,4 +32,9 @@ export class CatsService {
     return editedCat
   }
 
+  async delete(id: string) {
+    const deletedCat = await this.catModel.findByIdAndDelete(id)
+    console.log('deletedCat', deletedCat);
+    return deletedCat
+  }
 }
